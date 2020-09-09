@@ -1,46 +1,180 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>EZ Registrar</title>
+    <title>Ezra Zinberg</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
+
+  
+
   <style>
+    h1 {font-size: 72px ;
+    font-family: courier}
     body {background-color: palegoldenrod;
-        font-family="courier"}
+        font-family: "courier"}
+    
+        .button {
+  border: none;
+  color: white;
+  padding: 32px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 28px;
+  margin: 12px 144px;
+  transition-duration: 0.18s;
+  cursor: crosshair;
+}
+
+.button1 {
+  background-color: white; 
+  color: black;
+  margin: 12px 204px; 
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black;
+  margin: 12px 304px; 
+}
+
+.button2:hover {
+  background-color: #4CAF80;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  margin: 12px 404px;
+}
+
+.button3:hover {
+  background-color: #4CAFA0;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  margin: 12px 504px;
+}
+
+.button4:hover {background-color: #4CAFD0;}
+
+.button5 {
+  background-color: white;
+  color: black;
+  margin: 12px 604px;
+}
+
+.button5:hover {
+  background-color: #1CAFD0;
+  color: white;
+}
+
+.trail { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    border-radius: 3px;
+    background: plum;
+  }
+    
+    
   </style>
   <body>
 
-    <div class="w3-container w3-orange">
-      <h1>EZ Registrar</h1>
-    </div>
+  <script>
+    // dots is an array of Dot objects,
+// mouse is an object used to track the X and Y position
+   // of the mouse, set with a mousemove event listener below
+var dots = [],
+    mouse = {
+      x: 0,
+      y: 0
+    };
+
+// The Dot object used to scaffold the dots
+var Dot = function() {
+  this.x = 0;
+  this.y = 0;
+  this.node = (function(){
+    var n = document.createElement("div");
+    n.className = "trail";
+    document.body.appendChild(n);
+    return n;
+  }());
+};
+// The Dot.prototype.draw() method sets the position of 
+  // the object's <div> node
+Dot.prototype.draw = function() {
+  this.node.style.left = this.x + "px";
+  this.node.style.top = this.y + "px";
+};
+
+// Creates the Dot objects, populates the dots array
+for (var i = 0; i < 12; i++) {
+  var d = new Dot();
+  dots.push(d);
+}
+
+// This is the screen redraw function
+function draw() {
+  // Make sure the mouse position is set everytime
+    // draw() is called.
+  var x = mouse.x,
+      y = mouse.y;
+  
+  // This loop is where all the 90s magic happens
+  dots.forEach(function(dot, index, dots) {
+    var nextDot = dots[index + 1] || dots[0];
+    
+    dot.x = x;
+    dot.y = y;
+    dot.draw();
+    x += (nextDot.x - dot.x) * .6;
+    y += (nextDot.y - dot.y) * .6;
+
+  });
+}
+
+addEventListener("mousemove", function(event) {
+  //event.preventDefault();
+  mouse.x = event.pageX;
+  mouse.y = event.pageY;
+});
+
+// animate() calls draw() then recursively calls itself
+  // everytime the screen repaints via requestAnimationFrame().
+function animate() {
+  draw();
+  requestAnimationFrame(animate);
+}
+
+// And get it started by calling animate().
+animate();
+
+    </script>
 
     <div class="w3-container">
-      <p><color="white">Search Princeton University's course offerings for the Spring 2019 semester.</p>
+      <h1><u>EZRA ZINBERG</u></h1>
     </div>
 
+  
+<div class="w3-container">
+<button class="button button1">Github</button>
+<button class="button button2">NLP</button>
+<button class="button button3">Web</button>
+<button class="button button4">Gray</button>
+<button class="button button5">Black</button>
+</div>
 
-    <div class="w3-container">
-    <h4><color="white">Enter a course or department.</h4>
-    <form action = "/">
-      <div class="w3-container w3-padding-16">
-        <input type="text" name="query" placeholder="dept[/num]"><br>
-      </div>
-      <div class="w3-container">
-        <input type="submit" value="Submit" name="search">
-        <input type="submit" value="Count" name="count">
-        <input type="submit" value="Clear" name="clear">
-      </div>
-    </form>
 
-    </div>
-    <!-- <div class="w3-container w3-cell">
-      <img src="prince.jpeg">
-    </div> -->
-
-   <!--  <div class="w3-container w3-padding-16">
-       <img src="prince.jpg" align="center">
-    </div> -->
-   
 
  
   </body>

@@ -22,8 +22,6 @@
   display: block;
   font-size: 28px;
   margin: 12px 144px;
-  transition-duration: 0.18s;
-  cursor: crosshair;
 }
 
 .button1 {
@@ -78,9 +76,11 @@
   color: white;
 }
 
+
+
 .trail { /* className for the trail elements */
     position: absolute;
-    height: 12px; width: 12px;
+    height: 8px; width: 8px;
 
     background: plum;
   }
@@ -89,81 +89,7 @@
   </style>
   <body>
 
-  <script>
-
-// credit to Ryan Boone
-// https://codepen.io/falldowngoboone/pen/PwzPYv
-
-    // dots is an array of Dot objects,
-// mouse is an object used to track the X and Y position
-   // of the mouse, set with a mousemove event listener below
-var dots = [],
-    mouse = {
-      x: 0,
-      y: 0
-    };
-
-// The Dot object used to scaffold the dots
-var Dot = function() {
-  this.x = 0;
-  this.y = 0;
-  this.node = (function(){
-    var n = document.createElement("div");
-    n.className = "trail";
-    document.body.appendChild(n);
-    return n;
-  }());
-};
-// The Dot.prototype.draw() method sets the position of 
-  // the object's <div> node
-Dot.prototype.draw = function() {
-  this.node.style.left = this.x + "px";
-  this.node.style.top = this.y + "px";
-};
-
-// Creates the Dot objects, populates the dots array
-for (var i = 0; i < 12; i++) {
-  var d = new Dot();
-  dots.push(d);
-}
-
-// This is the screen redraw function
-function draw() {
-  // Make sure the mouse position is set everytime
-    // draw() is called.
-  var x = mouse.x,
-      y = mouse.y;
   
-  // This loop is where all the 90s magic happens
-  dots.forEach(function(dot, index, dots) {
-    var nextDot = dots[index + 1] || dots[0];
-    
-    dot.x = x;
-    dot.y = y;
-    dot.draw();
-    x += (nextDot.x - dot.x) * .6;
-    y += (nextDot.y - dot.y) * .6;
-
-  });
-}
-
-addEventListener("mousemove", function(event) {
-  //event.preventDefault();
-  mouse.x = event.pageX;
-  mouse.y = event.pageY;
-});
-
-// animate() calls draw() then recursively calls itself
-  // everytime the screen repaints via requestAnimationFrame().
-function animate() {
-  draw();
-  requestAnimationFrame(animate);
-}
-
-// And get it started by calling animate().
-animate();
-
-    </script>
 
     <div class="w3-container">
       <h1><u>EZRA ZINBERG</u></h1>
@@ -171,12 +97,94 @@ animate();
 
   
 <div class="w3-container">
-<button class="button button1">Github</button>
-<button class="button button2">NLP</button>
-<button class="button button3">Web</button>
-<button class="button button4">LinkedIn</button>
-<button class="button button5">More info</button>
+<button class="button button1" onclick=" window.open('https://github.com/ezinberg','_blank')"  >Git</button>
+<button class="button button2" onclick=" window.open('https://github.com/ezinberg/SentiLyric/blob/master/COS_IW_Paper_F2019__Tracing_Sentiment_for_Careers_in_Music_.pdf','_blank')">NLP</button>
+<button class="button button3" onclick=" window.open('http://pupalette.herokuapp.com/','_blank')"  >Web</button>
+<button class="button button4" onclick=" window.open('https://www.linkedin.com/in/ezra-zinberg-734168163/','_blank')" >LdIn</button>
+<button class="button button5" onclick=" window.open('https://ezinberg.wixsite.com/ezrazinberg','_blank')" >More</button>
 </div>
+
+ 
+<script>
+
+    // credit to Ryan Boone
+    // https://codepen.io/falldowngoboone/pen/PwzPYv
+    
+        // dots is an array of Dot objects,
+    // mouse is an object used to track the X and Y position
+       // of the mouse, set with a mousemove event listener below
+    // var dots = [],
+    //     mouse = {
+    //       x: 0,
+    //       y: 0
+    //     };
+    
+    // // The Dot object used to scaffold the dots
+    // var Dot = function() {
+    //   this.x = 0;
+    //   this.y = 0;
+    //   this.node = (function(){
+    //     var n = document.createElement("div");
+    //     n.className = "trail";
+    //     document.body.appendChild(n);
+    //     return n;
+    //   }());
+    // };
+    // // The Dot.prototype.draw() method sets the position of 
+    //   // the object's <div> node
+    // Dot.prototype.draw = function() {
+    //   this.node.style.left = this.x + "px";
+    //   this.node.style.top = this.y + "px";
+    // };
+    
+    // // Creates the Dot objects, populates the dots array
+    // for (var i = 0; i < 12; i++) {
+    //   var d = new Dot();
+    //   dots.push(d);
+    // }
+    
+    // // This is the screen redraw function
+    // function draw() {
+    //   // Make sure the mouse position is set everytime
+    //     // draw() is called.
+    //   var x = mouse.x,
+    //       y = mouse.y;
+      
+    //   // This loop is where all the 90s magic happens
+    //   dots.forEach(function(dot, index, dots) {
+        
+    //     var nextDot = dots[index + 1] || dots[0];
+        
+    //     dot.x = x;
+    //     dot.y = y;
+    //     dot.draw();
+    //     x += (nextDot.x - dot.x) * .3;
+    //     y += (nextDot.y - dot.y) * .3;
+        
+        
+    
+    //   });
+    // }
+    
+    // addEventListener("mousemove", function(event) {
+    //   //event.preventDefault();
+    //   mouse.x = event.pageX;
+    //   mouse.y = event.pageY;
+    // });
+    
+    // // animate() calls draw() then recursively calls itself
+    //   // everytime the screen repaints via requestAnimationFrame().
+    // function animate() {
+    //   draw();
+    //   requestAnimationFrame(animate);
+    // }
+    
+    // And get it started by calling animate().
+    // animate();
+    
+    
+    
+        </script>
 
 
 
